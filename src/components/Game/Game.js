@@ -1,7 +1,9 @@
 import React from 'react';
-import Banner from "../Banner";
 import Form from "../Form";
 import GuessResults from '../GuessResults';
+import FailBanner from "../FailBanner/FailBanner";
+import SuccessBanner from "../SuccessBanner";
+
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
@@ -35,8 +37,8 @@ function Game() {
         setUserWon={setUserWon}
         userWon={userWon}
       />
-      {userWon && <Banner type="happy" numGuesses={guessList.length} />}
-      {guessesLeft === 0 && !userWon && <Banner type="sad" answer={answer} />}
+      {userWon && <SuccessBanner numGuesses={guessList.length} />} 
+      {guessesLeft === 0 && !userWon && <FailBanner answer={answer}/>}
     </>
   );
 }
